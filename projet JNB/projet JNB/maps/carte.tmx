@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="10" height="12" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="tilled" tilewidth="32" tileheight="32" tilecount="0" columns="14">
+  <image source="tilled.jpeg" trans="ffffff" width="474" height="474"/>
+ </tileset>
+ <tileset firstgid="1" source="sans-titre.tsx"/>
+ <tileset firstgid="1" source="perfecto.tsx"/>
+ <layer name="Calque de Tile 1" width="10" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,
+0,1390,1390,1390,1390,1390,1390,0,0,0,
+0,1390,1390,1390,1390,1390,1390,1390,0,0,
+0,1390,1390,1390,1390,1390,1390,1390,1390,0,
+0,1390,3,3,3,3,3,3,1390,0,
+0,1390,3,3,3,3,3,3,1390,1390,
+0,1390,0,0,0,0,0,0,0,1390,
+0,1390,1390,0,0,0,0,0,1390,1390,
+0,0,1390,0,0,1390,1390,1390,1390,0,
+0,0,1390,1390,1390,1390,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>
