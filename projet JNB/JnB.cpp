@@ -58,15 +58,21 @@ void JnB::draw(sf::RenderWindow& window) {
     window.draw(healthText);
 }
 
-void JnB::update(sf::RenderWindow& window) {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+void JnB::update(const std::vector<std::vector<int>>& collisionMap, sf::RenderWindow& window) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && ( collisionMap[y][x - 1-8] != 1)) {
         x -= speed;
         frameWidth = characterTexturesLeft[0].getSize().x / frameCount;
         character.setTexture(characterTexturesLeft[currentFrame]);
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+    } if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && ( collisionMap[y][x + 1+16] != 1))  {
         x += speed;
         frameWidth = characterTextures[0].getSize().x / frameCount;
         character.setTexture(characterTextures[currentFrame]);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && ( collisionMap[y - 1-8][x+8] != 1)) {
+        y -= speed;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && ( collisionMap[y + 1+16][x+16] != 1)) {
+        y += speed;
     }
 
     int newFrame = static_cast<int>(x / X_THRESHOLD);
