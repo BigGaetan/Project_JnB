@@ -6,10 +6,11 @@ CXX = g++
 CXXFLAGS = -std=c++11 -Wfatal-errors -lsfml-graphics -lsfml-window -lsfml-system
 
 # Source files
-SRCS = main.cpp JnB.cpp carte.cpp
+
+SRCS = main.cpp JnB.cpp Enemy.cpp Bullet.cpp  # Ajoutez Enemy.cpp ici
 
 # Header files
-HDRS = JnB.h carte.h
+HDRS = JnB.h
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)
@@ -30,5 +31,5 @@ $(TARGET): $(OBJS)
 
 # Clean rule
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS) $(TARGET) 
 # pour ajouter de fichier écrire  main.cpp file1.cpp file2.cpp newfile.cpp

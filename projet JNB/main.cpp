@@ -1,47 +1,25 @@
-
 #include <SFML/Graphics.hpp>
 #include "JnB.h"
-#include "carte.h"
-#include <unordered_map>
-#include <iostream>
+#include "Bullet.h"
+#include "Enemy.h"
 
-void drawCollisionMap(sf::RenderWindow& window, const std::vector<std::vector<int>>& collisionMap, int tileSize) {
-    for (size_t i = 0; i < collisionMap.size(); ++i) {
-        for (size_t j = 0; j < collisionMap[i].size(); ++j) {
-            if (collisionMap[i][j] == 1) {
-                sf::RectangleShape rectangle(sf::Vector2f(tileSize, tileSize));
-                rectangle.setPosition(j * tileSize, i * tileSize);
-                rectangle.setFillColor(sf::Color::Red); // Couleur de la collision
-                window.draw(rectangle);
-            }
-            else{
-                sf::RectangleShape rectangle(sf::Vector2f(tileSize, tileSize));
-                rectangle.setPosition(j * tileSize, i * tileSize);
-                rectangle.setFillColor(sf::Color::Green); // Couleur de la collision
-                window.draw(rectangle);
-            }
-        }
-    }
-}
+const float PI = 3.14159265f;
+const float X_THRESHOLD = 100.0f;
+const float SCREEN_WIDTH = 800.0f;
+const float SCREEN_HEIGHT = 600.0f;
+const int MAX_BULLETS = 1;
+
 int main() {
-// attenttion a modifier plus tard premier terme correspond au tileset et le second a la carte
-/////ATTENTION LE FORMAT DE L'IMAGE DU TILESET DOIT etre .PNG
-    sf::RenderWindow window(sf::VideoMode(1920, 780), "SFML Window");
-    Carte carte("maps/carte2.png","maps/carte3.txt");
-    std::vector<std::vector<int>> tileMap = createTileMapFromFile("maps/carte3.txt");
-    // Chargez le masque de collision
-    std::unordered_map<int, std::vector<std::vector<int>>> collisionMasks = createCollisionMasks();
-    std::vector<std::vector<int>> collisionMap = createTileMapCollision(tileMap);
-     // Affichage de la carte de collision résultante
-    /*for (const std::vector<int>& row : collisionMap) {
-        for (const int &value : row) {
-            std::cout << value << " ";
-        }
-        std::cout << std::endl;
-    }*/
-    JnB jnb;
+    // Création de la fenêtre
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Mon Jeu");
 
-    window.display();
+    // Création de l'instance du personnage principal (JnB)
+    JnB player;
+
+    // Création d'un vecteur d'ennemis
+    std::vector<Enemy> enemies;
+
+    // Boucle principale du jeu
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -50,14 +28,28 @@ int main() {
             }
         }
 
-        jnb.update(collisionMap);
+        // Mise à jour de JnB (le joueur)
+        player.update(window);
 
+        // Mise à jour des ennemis
+        for (Enemy& enemy : enemies) {
+            enemy.update();
+        }
+
+        // Vérification des collisions entre les balles et les ennemis
+        player.checkCollisionsWithEnemies(enemies);
+
+        // Suppression des ennemis morts
+        enemies.erase(std::remove_if(enemies.begin(), enemies.end(), [](const Enemy& enemy) {
+            return enemy.isDead();
+        }), enemies.end());
+
+        // Dessin de tout
         window.clear();
-        carte.dessiner(window);
-        //décomenter pour que les collision s'affiche /!\ temps de calcule long, frizz le jeu
-        //drawCollisionMap(window, collisionMap, 1);
-        jnb.draw(window);
-
+        player.draw(window);
+        for (const Enemy& enemy : enemies) {
+            enemy.draw(window);
+        }
         window.display();
     }
 
