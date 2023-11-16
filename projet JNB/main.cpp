@@ -66,7 +66,7 @@ int main() {
         }
 
         // Mise à jour de JnB (le joueur)
-        player.update(collisionMap);
+        player.update(collisionMap, window);
 
         // Mise à jour des ennemis
         for (Enemy& enemy : enemies) {
