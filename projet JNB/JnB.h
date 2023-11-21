@@ -18,7 +18,7 @@ class JnB {
 public:
     JnB();
     void draw(sf::RenderWindow& window);
-    void update(sf::RenderWindow& window);
+    void update(const std::vector<std::vector<int>>& ,sf::RenderWindow& window);
     void shoot(float angle);
 
     void updateBullets();
