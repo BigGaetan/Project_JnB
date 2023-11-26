@@ -85,6 +85,7 @@ int main() {
         window.clear();
         carte.dessiner(window);
         player.draw(window);
+	drawBullets(window);
         for (const Enemy& enemy : enemies) {
             enemy.draw(window);
         }
