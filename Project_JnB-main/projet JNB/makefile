@@ -3,11 +3,10 @@
 CXX = g++
 
 # Compiler flags
-CXXFLAGS = -std=c++11 -Wfatal-errors -lsfml-graphics -lsfml-window -lsfml-system
+CXXFLAGS = -std=c++11 -Wfatal-errors -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 # Source files
-
-SRCS = main.cpp JnB.cpp Enemy.cpp Bullet.cpp carte.cpp   # Ajoutez Enemy.cpp ici
+SRCS = main.cpp JnB.cpp Enemy.cpp Bullet.cpp carte.cpp musique.cpp  # Ajoutez Enemy.cpp ici
 
 # Header files
 HDRS = JnB.h carte.h
