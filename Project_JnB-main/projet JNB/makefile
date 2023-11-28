@@ -6,10 +6,10 @@ CXX = g++
 CXXFLAGS = -std=c++11 -Wfatal-errors -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 # Source files
-SRCS = main.cpp JnB.cpp Enemy.cpp Bullet.cpp carte.cpp musique.cpp  # Ajoutez Enemy.cpp ici
+SRCS = main.cpp JnB.cpp Enemy.cpp Bullet.cpp carte.cpp musique.cpp  
 
 # Header files
-HDRS = JnB.h carte.h
+HDRS = JnB.h carte.h Enemy.h Bullet.h musique.h
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)
