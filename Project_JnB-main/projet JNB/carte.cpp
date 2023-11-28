@@ -186,7 +186,7 @@ std::unordered_map<int, std::vector<std::vector<int>>> createCollisionMasks() {
     collisionMasks.emplace(53, collisionMaskHautGauche);
     collisionMasks.emplace(54, collisionMaskDemiHaut);
     collisionMasks.emplace(55, collisionMaskHautDroite);
-    collisionMasks.emplace(247, collisionMaskDroite);
+    collisionMasks.emplace(247, collisionMaskPlein);
     collisionMasks.emplace(245, collisionMaskGauche);
 
     // Ajoutez d'autres masques de collision si nécessaire ici.
