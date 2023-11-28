@@ -5,6 +5,7 @@
 #include "carte.h"
 #include <unordered_map>
 #include <iostream>
+#include "musique.h"
 
 const float PI = 3.14159265f;
 const float X_THRESHOLD = 100.0f;
@@ -35,7 +36,8 @@ void drawCollisionMap(sf::RenderWindow& window, const std::vector<std::vector<in
 int main() {
     // Création de la fenêtre
     sf::RenderWindow window(sf::VideoMode(1920, 780), "Mon Jeu");
-
+    Musique musique;
+    musique.playMusic();
     // Création de l'instance du personnage principal (JnB)
     JnB player;
 	player.resizeCharacter(0.5,0.5);
